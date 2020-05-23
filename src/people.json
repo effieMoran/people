@@ -1,0 +1,17 @@
+
+  {
+    "people": [
+      {
+        "name": "Jane Doe",
+        "image_large": "https://randomuser.me/api/portraits/women/44.jpg",
+        "image_medium": "https://randomuser.me/api/portraits/med/women/44.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/44.jpg"
+      },
+      {
+        "name": "John Doe",
+        "image_large": "https://randomuser.me/api/portraits/men/1.jpg",
+        "image_medium": "https://randomuser.me/api/portraits/med/men/1.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
+      }
+    ]
+  }

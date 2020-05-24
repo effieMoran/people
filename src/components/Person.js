@@ -4,17 +4,37 @@ class Person extends Component {
     constructor() {
         super();
         this.state = {
-            name: 'Name',
-            thumbnail: 'Thumbnail'
+            pictures: []
         }
     }
 
+    componentDidMount() {
+        fetch('https://randomuser.me/api/?results=18')
+            .then( results => {
+                return results.json();
+            }).then( data => {
+                let pictures = data.results.map((pic) => {
+                    return (
+                        <div key={pic.results}>
+                            <img src={pic.picture.thumbnail}/>
+                            <a> {pic.name.first} {pic.name.last}</a>
+                        </div>
+                    )
+                })
+            this.setState({pictures: pictures});
+        })
+    }
+
     render() {
+
         return(
             <div>
-                <img>{this.state.name}</img>
-                <a>{this.state.name}</a>
+                <div>
+                    {this.state.pictures}
+                </div>
             </div>
         );
     }
 }
+
+export default Person;

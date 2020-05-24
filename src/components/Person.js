@@ -16,7 +16,7 @@ class Person extends Component {
                 let pictures = data.results.map((pic) => {
                     return (
                         <div key={pic.results}>
-                            <img src={pic.picture.thumbnail}/>
+                            <img alt="Person picture" src={pic.picture.thumbnail}/>
                             <a> {pic.name.first} {pic.name.last}</a>
                         </div>
                     )

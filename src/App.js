@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Navigation from "./components/Navigation";
-import  Person from "./components/Person";
+import  UserList from "./components/UserList";
 
 class App extends Component {
     render() {
@@ -10,7 +10,7 @@ class App extends Component {
 
             <div>
                 <Navigation/>
-                <Person/>
+                <UserList/>
             </div>
         );
     }

@@ -1,4 +1,4 @@
-##PEOPLE
+## PEOPLE
 
 Simple application built with React to list users and display data about them.
 

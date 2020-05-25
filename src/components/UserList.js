@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import User from './User';
 
@@ -10,11 +10,7 @@ export default class UserList extends Component {
     render() {
         const usersElements = this.renderList();
         return (
-            <div>
-                <div>
-                    {usersElements}
-                </div>
-            </div>
+            <div> {usersElements} </div>
         );
     }
 }
@@ -23,6 +19,6 @@ UserList.propTypes = {
     users: PropTypes.array
 };
 
-UserList.defaultTypes =  {
+UserList.defaultTypes = {
     users: []
 };

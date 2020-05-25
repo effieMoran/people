@@ -33,8 +33,8 @@ export default class User extends Component {
         }
 
         return (
-            <div key={user.results} onClick={this.onClick}>
-                <img alt="User" src={user.picture.thumbnail}/>
+            <div className='Person' key={user.results} onClick={this.onClick}>
+                <img alt='User' src={user.picture.thumbnail}/>
                 <a> {user.name.first} {user.name.last}</a>
                 {userDetails}
             </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Navigation from './components/Navigation';
 import UserList from './components/UserList';
 import './App.css';
+import UserDetails from "./components/UserDetails";
 
 export default class App extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ export default class App extends Component {
         let theBox;
 
         if(this.state.selectedUser) {
-            theBox = <Box selectedUser={this.state.selectedUser} />;
+            theBox = <UserDetails selectedUser={this.state.selectedUser} />;
         }
 
         return (
@@ -40,8 +41,4 @@ export default class App extends Component {
             </div>
         );
     }
-}
-
-function Box(props) {
-    return <span>{JSON.stringify(props)}</span>;
 }

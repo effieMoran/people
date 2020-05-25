@@ -1,39 +1,28 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import User from './User';
 
-class UserList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            users: []
-        }
-    }
-
-    componentDidMount() {
-        fetch('https://randomuser.me/api/?results=18')
-            .then(results => {
-                return results.json();
-            }).then(data => {
-            let users = data.results.map((user) => {
-                return (
-                    <div key={user.results}>
-                        <img alt="User" src={user.picture.thumbnail}/>
-                        <a> {user.name.first} {user.name.last}</a>
-                    </div>
-                )
-            })
-            this.setState({users: users});
-        })
+export default class UserList extends Component {
+    renderList() {
+        return this.props.users.map(userObj => <User onClick={this.props.onClick} user={userObj}/>);
     }
 
     render() {
+        const usersElements = this.renderList();
         return (
             <div>
                 <div>
-                    {this.state.users}
+                    {usersElements}
                 </div>
             </div>
         );
     }
 }
 
-export default UserList;
+UserList.propTypes = {
+    users: PropTypes.array
+};
+
+UserList.defaultTypes =  {
+    users: []
+};

@@ -53,6 +53,8 @@
     max-width: 500px;
     display: flex;
     justify-content: flex-start;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 @keyframes App-logo-spin {
     from {

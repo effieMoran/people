@@ -63,7 +63,7 @@ export default class App extends Component {
             <div>
                 <Navigation/>
                 <form>
-                    <input type="text" id="filter" placeholder="Search for..." ref={input => this.search = input}
+                    <input className='SearchBar' type="text" id="filter" placeholder="Search for..." ref={input => this.search = input}
                            onChange={this.handleInputChange}/>
                 </form>
                 <UserList users={this.state.filteredUsers} onClick={this.setSelectedUser}/>

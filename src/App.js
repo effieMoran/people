@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import UserList from './components/UserList';
 import './App.css';
 import UserDetails from "./components/UserDetails";
+import UserService from "./services/UserService";
 
 export default class App extends Component {
     constructor(props) {
@@ -19,12 +20,11 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        fetch('https://randomuser.me/api/?results=5')
-            .then(response => response.json())
+        UserService.getUsersData()
             .then(data => this.setState({
                 userList: data.results,
                 filteredUsers: data.results
-            }));
+            }))
     }
 
     handleInputChange = () => {

@@ -10,16 +10,42 @@ export default class App extends Component {
 
         this.state = {
             userList: [],
-            selectedUser: null
+            selectedUser: null,
+            query: '',
+            filteredUsers: []
         };
 
-        this.setSelectedUser =this.setSelectedUser.bind(this);
+        this.setSelectedUser = this.setSelectedUser.bind(this);
     }
 
     componentDidMount() {
-        fetch('https://randomuser.me/api/?results=18')
+        fetch('https://randomuser.me/api/?results=5')
             .then(response => response.json())
-            .then(data => this.setState({userList: data.results}));
+            .then(data => this.setState({
+                userList: data.results,
+                filteredUsers: data.results
+            }));
+    }
+
+    handleInputChange = () => {
+        this.setState({
+            query: this.search.value
+        })
+        this.filterArray();
+    }
+
+    filterArray = () => {
+        let searchString = this.state.query;
+        let filteredUsers = this.state.userList;
+        if (searchString.length > 0) {
+            filteredUsers = filteredUsers.filter(user => {
+                return user.name.first.toLowerCase().match(searchString)
+                    || user.name.last.toLowerCase().match(searchString);
+            })
+        } else {
+            filteredUsers =  this.state.userList;
+        }
+        this.setState({filteredUsers: filteredUsers});
     }
 
     setSelectedUser(user) {
@@ -29,14 +55,18 @@ export default class App extends Component {
     render() {
         let theBox;
 
-        if(this.state.selectedUser) {
-            theBox = <UserDetails selectedUser={this.state.selectedUser} />;
+        if (this.state.selectedUser) {
+            theBox = <UserDetails selectedUser={this.state.selectedUser}/>;
         }
 
         return (
             <div>
                 <Navigation/>
-                <UserList users={this.state.userList} onClick={this.setSelectedUser}/>
+                <form>
+                    <input type="text" id="filter" placeholder="Search for..." ref={input => this.search = input}
+                           onChange={this.handleInputChange}/>
+                </form>
+                <UserList users={this.state.filteredUsers} onClick={this.setSelectedUser}/>
                 {theBox}
             </div>
         );

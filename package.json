@@ -13,6 +13,7 @@
     "superagent": "^5.2.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,5 +36,8 @@
   },
   "devDependencies": {
     "prop-types": "^15.7.2"
+  },
+  "engines": {
+    "node": "13.0.1"
   }
 }
